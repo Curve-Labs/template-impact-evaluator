@@ -1,0 +1,17 @@
+{
+  "name": "hundred",
+  "version": "1.0.0",
+  "packageManager": "yarn@3.3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Curve-Labs/template-impact-evaluator"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "yarn build": "sh shell/build.sh",
+    "yarn run:bacalhau": "sh shell/run_bacalhau.sh"
+  },
+  "dependencies": {
+    "typescript": "^4.9.4"
+  }
+}
