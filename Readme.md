@@ -19,10 +19,24 @@ yarn build
 Note: When you build and deploy, this script will also run the Impact Evaluator locally to check if it works.
 
 ## Run on bacalhau
-Once you have deployed Impact Evaluator docker image, you can run it on bacalhau using the following command
+Once you have deployed Impact Evaluator docker image, you can run it on bacalhau using the following command:
 ```sh
 yarn run:bacalhau
 ```
+Note: Following command expects you to input two files: `data.json` & `trustedSeed.json`. (Case Sensitive file names)
+
+## Run with multiple inputs
+To run docker image on bacalhau with multiple inputs, use following command:
+### HTTPs inputs
+```sh
+bacalhau docker run -u $INPUT_1 -u $INPUT_2 ..... -u $INPUT_X $DOCKER_IMAGE
+```
+
+### IPFS inputs
+```sh
+bacalhau docker run --inputs $IPFS_CID_1 --inputs $IPFS_CID_2 ..... --inputs $IPFS_CID_X $DOCKER_IMAGE
+```
+
 
 ## Testing
 Currently, if you want to test your Impact Evaluator function, you need to build and run it on docker. We are working on bringing ease in testing.
