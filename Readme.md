@@ -13,6 +13,8 @@ The repository includes:
 
 A video guide on how to run the Impact Evaluator can be accessed via [this link](https://www.loom.com/share/6cf0ad08ae2b424cb7a5d072c29811d1).
 
+**To utilize this template, please create a fork of the template repository.**
+
 # Prerequisites
 
 ## Docker
