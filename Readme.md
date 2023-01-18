@@ -1,6 +1,6 @@
 # TEMPLATE IMPACT EVALUATOR
 
-# Description
+## Description
 
 This repository contains a template for the Impact Evaluator function, which can be used to measure the impact of contributions to a DAO. It is based on the following [research paper](https://threebox.notion.site/Impact-Evaluators-Over-Ceramic-Data-5ac733f30a454356914b22778f512381).
 
@@ -13,26 +13,40 @@ The repository includes:
 
 A video guide on how to run the Impact Evaluator can be accessed via [this link](https://www.loom.com/share/6cf0ad08ae2b424cb7a5d072c29811d1).
 
-**To utilize this template, please create a fork of the template repository.**
+## Table of Contents
 
-# Prerequisites
+- [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Impact Evalutor Function](#impact-evalutor-function)
+- [Build and Deploy](#build-and-deploy)
+- [Usage](#usage)
+- [Testing](#testing)
 
-## Docker
+## Getting Started
+
+To utilize this template, **please create a fork of the template** repository on Github.
+
+After creating a fork, please clone the repository to your computer.
+
+## Prerequisites
+
+### Docker
 
 - To build the Docker container that will be used buy Bacalhau, you will need to have Docker Desktop installed on your machine. You can download the installer from the [Docker website](https://www.docker.com/products/docker-desktop/).
 
 - An account on Docker Hub is required in order to push your built images to the hub. You can create a Docker Hub account on the [Docker website](https://hub.docker.com/).
 
-## Bacalhau
+### Bacalhau
 
 - Bacalhau is used to run the Docker container with the Impact Evaluator function. You can install Bacalhau through the [Bacalhau website](https://docs.bacalhau.org/getting-started/installation/)
 
-## NodeJS & Yarn
+### NodeJS & Yarn
 
 - NodeJS [(Install NodeJS)](https://nodejs.org/en/download/)
 - Yarn [(Install Yarn)](https://classic.yarnpkg.com/en/docs/install)
 
-# Installation
+## Installation
 
 To install the dependencies for this project, please run the command yarn install in your terminal. This command will install all the necessary packages required to run the application.
 
@@ -40,16 +54,14 @@ To install the dependencies for this project, please run the command yarn instal
 yarn
 ```
 
-# Setup
+## Impact Evalutor Function
 
 When initially setting up the repository **and** whenever you wish to modify the Impact Evaluator function afterwards, the following actions are required:
 
 1. Edit the Impact Evaluator function in `./ImpactEvaluator/ImpactEvaluatorFunction.ts`
 2. Build and deploy a new Docker image by running the command `yarn build`
 
-For more information on these steps, please refer to the sections below.
-
-## Impact Evalutor Function
+### Custom Logic
 
 To implement the Impact Evaluator function, you will need to edit the file located at `./ImpactEvaluator/ImpactEvaluatorFunction.ts`.
 
@@ -60,7 +72,7 @@ To implement the Impact Evaluator function, you will need to edit the file locat
 
 Instructions on how to edit the function can be found in the comments within the file.
 
-## Deploy Docker Image
+## Build and Deploy
 
 Before building and deploying your Docker image, there are a few important things to note:
 
@@ -74,18 +86,18 @@ To create and deploy your Docker image, run the following command:
 yarn build
 ```
 
-# Usage
+## Usage
 
 After successfully deploying the Impact Evaluator Docker image, it can be run on Bacalhau.
 
 To facilitate the usage of the Impact Evaluator, a script has been provided to guide you through the process.
 
-## Script
+### Script
 
 Before running the script, please keep in mind the following:
 
 - The script will prompt you to provide the type of processor used on the machine.
-- The script will also ask for your Docker Hub username and the name of the Docker image. Please ensure that you use the same username and image name that you provided during the setup step.
+- The script will also ask for your Docker Hub username and the name of the Docker image. Please ensure that you use the same username and image name that you provided during the building Docker image step.
 - **IMPORTANT:** The script expects a `JSON` formated type stored on IPFS. For more information on the type of input that is expected within each member, please see the comments within the `./ImpactEvaluator/ImpactEvaluatorFunction.ts` file. The files stored on IPFS should be formatted in the following way:
 
 ```JSON
@@ -105,7 +117,7 @@ To execute the Impact Evaluator, run the following command:
 yarn run:bacalhau
 ```
 
-## Output
+### Output
 
 Upon executing the command, the Docker image will be run on Bacalhau and the results will be saved in the `./results` directory. Within this directory, you will find a subdirectory named `combined_results/` which contains the data that can be used as input for other processes. It's worth noting that this directory is ignored by git.
 
