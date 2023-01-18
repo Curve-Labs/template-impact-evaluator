@@ -3,6 +3,12 @@
 ## Note
 Only add code in `./ImpactEvaluator/` directory. Code added outside the specified directory might not execute.
 
+## Prerequisites
+1. Docker Desktop is installed and running. [(Install Docker Desktop Now)](https://www.docker.com/products/docker-desktop/)
+2. Bacalhau is installed. [(Install Bacalhau Now)](https://docs.bacalhau.org/getting-started/installation)
+3. Have an account on Docker Hub. [(Create account here)](https://hub.docker.com/)
+4. NodeJS [(Install NodeJS now)](https://nodejs.org/en/download/)
+
 ## Write your first Impact Evaluator function
 The file name `./ImpactEvaluator/ImpactEvaluatorFunction.ts` is case senstivie and shouldn't be changed.
 Write your impact evaluator logic inside the defined `impactEvaluatorFunction` function.
