@@ -11,6 +11,8 @@ The repository includes:
 - a script to run Bacalhau based on the Docker image
 - example commands on how to run Bacalhau directly, which enables different input option.
 
+A video guide on how to run the Impact Evaluator can be accessed via [this link](https://www.loom.com/share/6cf0ad08ae2b424cb7a5d072c29811d1).
+
 # Prerequisites
 
 ## Docker
@@ -56,7 +58,7 @@ To implement the Impact Evaluator function, you will need to edit the file locat
 
 Instructions on how to edit the function can be found in the comments within the file.
 
-## Deploy Docker
+## Deploy Docker Image
 
 Before building and deploying your Docker image, there are a few important things to note:
 
@@ -72,83 +74,39 @@ yarn build
 
 # Usage
 
+After successfully deploying the Impact Evaluator Docker image, it can be run on Bacalhau.
+
+To facilitate the usage of the Impact Evaluator, a script has been provided to guide you through the process.
+
 ## Script
 
-## Bacalhau commands
+Before running the script, please keep in mind the following:
 
-## **Below Work In Progress**
+- The script will prompt you to provide the type of processor used on the machine.
+- The script will also ask for your Docker Hub username and the name of the Docker image. Please ensure that you use the same username and image name that you provided during the setup step.
+- **IMPORTANT:** The script expects a `JSON` formated type stored on IPFS. For more information on the type of input that is expected within each member, please see the comments within the `./ImpactEvaluator/ImpactEvaluatorFunction.ts` file. The files stored on IPFS should be formatted in the following way:
 
-## Note
-
-Only add code in `./ImpactEvaluator/` directory. Code added outside the specified directory might not execute.
-
-- Every time I change the IE -> build again
-- Only edit .ts files, the .js files are auto generated
-
-## Prerequisites
-
-1. Docker Desktop is installed and running. [(Install Docker Desktop Now)](https://www.docker.com/products/docker-desktop/)
-2. Bacalhau is installed. [(Install Bacalhau Now)](https://docs.bacalhau.org/getting-started/installation)
-3. Have an account on Docker Hub. [(Create account here)](https://hub.docker.com/)
-4. NodeJS [(Install NodeJS now)](https://nodejs.org/en/download/)
-
-## Write your first Impact Evaluator function
-
-The file name `./ImpactEvaluator/ImpactEvaluatorFunction.ts` is case senstivie and shouldn't be changed.
-Write your impact evaluator logic inside the defined `impactEvaluatorFunction` function.
-If you want to make it modular, you can add more files and function anythwere inside `./ImpactEvaluator/` directory.
-
-## Deploy
-
-Once you have written your Impact Evaluator function, create and deploy you Docker image using following command:
-
-```sh
-yarn build
+```JSON
+{
+  "data": {},
+  "trustedSeed": [],
+  "previousRewards": "",
+  "otherData": {},
+}
 ```
 
-Note: When you build and deploy, this script will also run the Impact Evaluator locally to check if it works.
+- Once you have provided the above information, the script will present you with several input options to choose from. If you plan to use an IPFS gateway, please select the **HTTPS** option. Otherwise, select the **IPFS** option. The remaining 3 options are for testing purposes and use mocked data.
 
-- use your Docker username
-- Can be anything for the repo
-- Everything lower case
-
-## Run on bacalhau
-
-Once you have deployed Impact Evaluator docker image, you can run it on bacalhau using the following command:
+To execute the Impact Evaluator, run the following command:
 
 ```sh
 yarn run:bacalhau
 ```
 
-When you run the above command, docker image will be executed on bacalhau and the results will be downloaded in `./results` directory. This directory is ignored by git.
-Note: Following command expects you to input two files: `data.json` & `trustedSeed.json`. (Case Sensitive file names)
+## Output
 
-## Run with multiple inputs
-
-To run docker image on bacalhau with multiple inputs, use following command:
-
-### HTTPs inputs
-
-```sh
-bacalhau docker run -u $INPUT_1 -u $INPUT_2 ..... -u $INPUT_X $DOCKER_IMAGE
-```
-
-### IPFS inputs
-
-```sh
-bacalhau docker run --inputs $IPFS_CID_1 --inputs $IPFS_CID_2 ..... --inputs $IPFS_CID_X $DOCKER_IMAGE
-```
-
-## How to install new packages
-
-As it is a template repository and was created to make it easier to create and deploy Impact Evaluator function that run on bacalhau.
-Please use following command to install any package.
-Note: If you use `yarn add` or `npm install`, docker image might break.
-
-```sh
-todo: command to install new packages that add package to package.json file and add RUN command to install the package in Dockerfile as well.
-```
+Upon executing the command, the Docker image will be run on Bacalhau and the results will be saved in the `./results` directory. Within this directory, you will find a subdirectory named `combined_results/` which contains the data that can be used as input for other processes. It's worth noting that this directory is ignored by git.
 
 ## Testing
 
-Currently, if you want to test your Impact Evaluator function, you need to build and run it on docker. We are working on bringing ease in testing.
+At the moment, in order to test your Impact Evaluator function, it needs to be built and run within a Docker container. We are working on providing a more streamlined testing process.
