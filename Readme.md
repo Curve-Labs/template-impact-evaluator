@@ -120,6 +120,7 @@ Once you have deployed Impact Evaluator docker image, you can run it on bacalhau
 yarn run:bacalhau
 ```
 
+When you run the above command, docker image will be executed on bacalhau and the results will be downloaded in `./results` directory. This directory is ignored by git.
 Note: Following command expects you to input two files: `data.json` & `trustedSeed.json`. (Case Sensitive file names)
 
 ## Run with multiple inputs
