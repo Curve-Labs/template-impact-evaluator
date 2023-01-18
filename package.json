@@ -8,8 +8,8 @@
   },
   "scripts": {
     "compile": "tsc",
-    "yarn build": "sh shell/build.sh",
-    "yarn run:bacalhau": "sh shell/run_bacalhau.sh"
+    "build": "sh shell/build.sh",
+    "run:bacalhau": "sh shell/run_bacalhau.sh"
   },
   "dependencies": {
     "typescript": "^4.9.4"
