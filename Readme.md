@@ -3,13 +3,10 @@
 ## Note
 Only add code in `./ImpactEvaluator/` directory. Code added outside the specified directory might not execute.
 
-## How to install new packages
-As it is a template repository and was created to make it easier to create and deploy Impact Evaluator function that run on bacalhau.
-Please use following command to install any package.
-Note: If you use `yarn add` or `npm install`, docker image might break.
-```sh
-todo: command to install new packages that add package to package.json file and add RUN command to install the package in Dockerfile as well.
-```
+## Write your first Impact Evaluator function
+The file name `./ImpactEvaluator/ImpactEvaluatorFunction.ts` is case senstivie and shouldn't be changed.
+Write your impact evaluator logic inside the defined `impactEvaluatorFunction` function.
+If you want to make it modular, you can add more files and function anythwere inside `./ImpactEvaluator/` directory.
 
 ## Deploy
 Once you have written your Impact Evaluator function, create and deploy you Docker image using following command:
@@ -37,6 +34,14 @@ bacalhau docker run -u $INPUT_1 -u $INPUT_2 ..... -u $INPUT_X $DOCKER_IMAGE
 bacalhau docker run --inputs $IPFS_CID_1 --inputs $IPFS_CID_2 ..... --inputs $IPFS_CID_X $DOCKER_IMAGE
 ```
 
+
+## How to install new packages
+As it is a template repository and was created to make it easier to create and deploy Impact Evaluator function that run on bacalhau.
+Please use following command to install any package.
+Note: If you use `yarn add` or `npm install`, docker image might break.
+```sh
+todo: command to install new packages that add package to package.json file and add RUN command to install the package in Dockerfile as well.
+```
 
 ## Testing
 Currently, if you want to test your Impact Evaluator function, you need to build and run it on docker. We are working on bringing ease in testing.
